@@ -6,13 +6,15 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField
 from wtforms.validators import DataRequired
 import os
+from dotenv import load_dotenv
+load_dotenv('/Users/Artema/Desktop/my_envs/my_envs_100_movies.env')
 
-api_key = os.environ.get('api_key')
+api_key = os.getenv('api_key')
 url = 'https://api.themoviedb.org/3/search/movie'
 requests.get(url=url, params={'api_key': api_key, 'query': ''})
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///movies.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
