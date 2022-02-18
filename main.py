@@ -50,7 +50,7 @@ class Movie(db.Model):
     def __repr__(self):
         return '%s %s %s %s %s %s %s %s' % (
             self.id, self.title, self.year, self.description, self.rating, self.ranking, self.review, self.img_url)
-
+db.create_all()
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
