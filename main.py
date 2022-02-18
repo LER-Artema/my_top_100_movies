@@ -5,13 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField
 from wtforms.validators import DataRequired
+import os
 
-api_key = '129ee11aa9f2f98167273e6513d93b74'
+api_key = os.environ.get('api_key')
 url = 'https://api.themoviedb.org/3/search/movie'
 requests.get(url=url, params={'api_key': api_key, 'query': ''})
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///movies.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
