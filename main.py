@@ -1,12 +1,14 @@
+import os
+
 import requests
+from dotenv import load_dotenv
 from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField
 from wtforms.validators import DataRequired
-import os
-from dotenv import load_dotenv
+
 load_dotenv('/Users/Artema/Desktop/my_envs/my_envs_100_movies.env')
 
 api_key = os.getenv('api_key')
@@ -50,7 +52,10 @@ class Movie(db.Model):
     def __repr__(self):
         return '%s %s %s %s %s %s %s %s' % (
             self.id, self.title, self.year, self.description, self.rating, self.ranking, self.review, self.img_url)
+
+
 db.create_all()
+
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
