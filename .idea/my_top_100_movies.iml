@@ -12,7 +12,7 @@
     <orderEntry type="library" name="font-awesome" level="application" />
   </component>
   <component name="PackageRequirementsSettings">
-    <option name="modifyBaseFiles" value="true" />
+    <option name="keepMatchingSpecifier" value="false" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
